@@ -30,3 +30,7 @@ C:\Projects\MatrixCalculator\obj\Debug\net7.0\refint\MatrixCalculator.dll
 C:\Projects\MatrixCalculator\obj\Debug\net7.0\MatrixCalculator.pdb
 C:\Projects\MatrixCalculator\obj\Debug\net7.0\MatrixCalculator.genruntimeconfig.cache
 C:\Projects\MatrixCalculator\obj\Debug\net7.0\ref\MatrixCalculator.dll
+C:\Projects\MatrixCalculator\bin\Debug\net7.0\xunit.abstractions.dll
+C:\Projects\MatrixCalculator\bin\Debug\net7.0\xunit.assert.dll
+C:\Projects\MatrixCalculator\bin\Debug\net7.0\xunit.core.dll
+C:\Projects\MatrixCalculator\bin\Debug\net7.0\xunit.execution.dotnet.dll
