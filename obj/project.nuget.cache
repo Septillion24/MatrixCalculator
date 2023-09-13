@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "owGxuj1bVZwtHtd/bmec89H/kwFRdP+pzdZEt3O67VMYgTN4Ftr8A9975L+2k/u5xVcFH5GBLr9Zn4SGTrJWrA==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\noahg\\.nuget\\packages\\mstest.testframework\\3.1.1\\mstest.testframework.3.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}
