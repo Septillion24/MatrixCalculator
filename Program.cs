@@ -1,16 +1,58 @@
-﻿Matrix matrix1 = new Matrix(new List<List<float>>() 
+﻿class Program
 {
-    new List<float> {1, 2},
-    new List<float> {2, 3}
+    static void Main(string[] args)
+    {
+        promptUserMatrix("A");
+    }
+
+
+    static Matrix? promptUserMatrix(string matrixName)
+    {
+        Console.Clear();
+        Console.WriteLine("Input dimensions of matrix:");
+        Console.Write("Rows: ");
+        String userInput = Console.ReadLine();
+        if (!int.TryParse(userInput, out int rows))
+        {
+            return null;
+        }
+        Console.Write("Columns: ");
+        userInput = Console.ReadLine();
+        if (!int.TryParse(userInput, out int columns))
+        {
+            return null;
+        }
+        Matrix userMatrix = new Matrix(rows, columns);
+
+        float userValue;
+        bool success = false;
+        for (int row = 0; row < rows; row++)
+        {
+            for (int column = 0; column < columns; column++)
+            {
+                Console.Clear();
+                do
+                {
+                    
+                    Console.WriteLine(userMatrix.ToString());
+                    Console.Write($"\n Input value for value at {row},{column}: ");
+                    userInput = Console.ReadLine();
+                    if (float.TryParse(userInput, out userValue))
+                    {
+                        userMatrix.setRowColumn(row, column, userValue);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Failed, could not convert \"{userInput}\" to a float. Please try again.");
+                    }
+
+                } while (!float.TryParse(userInput, out userValue));
+            }
+        }
+        
+        return userMatrix;
+    }
+
+
+
 }
-);
-
-Matrix matrix2 = new Matrix(new List<List<float>>() 
-{
-    new List<float> {3, 4},
-    new List<float> {1, 5}
-}
-);
-
-
-Console.WriteLine(matrix1.multiply(matrix2).ToString());
