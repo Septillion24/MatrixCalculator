@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {}
+    "c:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {
+    "c:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+        "projectUniqueName": "c:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
         "projectName": "MatrixCalculator",
-        "projectPath": "C:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+        "projectPath": "c:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
         "packagesPath": "C:\\Users\\noahg\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\noahg\\Projects\\MatrixCalculator\\obj\\",
+        "outputPath": "c:\\Users\\noahg\\Projects\\MatrixCalculator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\noahg\\AppData\\Roaming\\NuGet\\NuGet.Config"
