@@ -2,7 +2,10 @@
 {
     static void Main(string[] args)
     {
-        promptUserMatrix("A");
+        Matrix a = promptUserMatrix("A");
+        Matrix b = promptUserMatrix("B");
+
+        Console.WriteLine(a.multiply(b));
     }
 
 

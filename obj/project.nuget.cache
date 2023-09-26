@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LCnkfhaQT/8cNLSpZJeuZmTU+iOwGv+N1afToGY7vad+MxHE3ffjFeROL3gCyMGSTPjO+f1VVUhjXDPiZGTEyw==",
+  "dgSpecHash": "7hlEuJlXLR6CmgWqBLpiOheSUZm28rhhE4Nju+TpqV4+czaJ4B9KImn8ZFifjHpUV2eF6tcdyzwUWq02gpPReg==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+  "projectFilePath": "C:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\noahg\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\noahg\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
