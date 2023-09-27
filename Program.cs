@@ -33,11 +33,12 @@ class Program
             for (int column = 0; column < columns; column++)
             {
                 Console.Clear();
-                do
+                bool continuePrompting = true;
+                while (continuePrompting)
                 {
-                    promptRowColumn(out userInput, userMatrix, out userValue, row, column);
+                    continuePrompting = promptRowColumn(out userInput, userMatrix, row, column);
+                }
 
-                } while (!float.TryParse(userInput, out userValue));
             }
         }
 
@@ -45,6 +46,7 @@ class Program
 
         static void promptUserCommandOrDimensions(string matrixName, bool force, out Match match, out int rows, out int columns, out string userInput)
         {
+            //TODO: doesn't work lol
             do
             {
                 rows = 0;
@@ -73,8 +75,9 @@ class Program
 
         }
 
-        static void promptRowColumn(out string userInput, Matrix userMatrix, out float userValue, int row, int column)
+        static bool promptRowColumn(out string userInput, Matrix userMatrix, int row, int column)
         {
+            float userValue;
             Console.WriteLine(userMatrix.ToString());
             Console.Write($"\n Input value for value at {row},{column}: ");
             userInput = Console.ReadLine();
@@ -82,20 +85,22 @@ class Program
             (string letters, string numbers) userResult = parseUserResult(userInput);
             if (float.TryParse(userInput, out userValue))
             {
-                Expression expression = new Expression('x',0,1,userValue);
+                Expression expression = new Expression('x', 0, 1, userValue);
                 userMatrix.setRowColumn(row, column, expression);
+                return false;
             }
             else if (userResult.letters.Length == 1)
             {
-                //TODO: do
                 tryGetExpression(userInput, out Expression expression);
+                userMatrix.setRowColumn(row, column, expression);
+                return false;
             }
             else
             {
                 Console.WriteLine($"Failed, could not convert \"{userInput}\" to an expression or number. Please try again.");
+                return true;
             }
         }
-
     }
 
 

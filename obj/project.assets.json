@@ -4932,11 +4932,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+      "projectUniqueName": "c:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
       "projectName": "MatrixCalculator",
-      "projectPath": "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+      "projectPath": "c:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
       "packagesPath": "C:\\Users\\noahg\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\MatrixCalculator\\obj\\",
+      "outputPath": "c:\\Projects\\MatrixCalculator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\noahg\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4991,13 +4991,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Projects\\MatrixCalculator\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

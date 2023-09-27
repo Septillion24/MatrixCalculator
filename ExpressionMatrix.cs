@@ -2,7 +2,7 @@ using System.Diagnostics.Contracts;
 using System.Security.Claims;
 using System.Text;
 
-class ExpressionMatrix
+class Matrix
 {
 
     // list of rows
@@ -13,13 +13,13 @@ class ExpressionMatrix
     List<List<Expression>> values;
 
 
-    public ExpressionMatrix(List<List<Expression>> values)
+    public Matrix(List<List<Expression>> values)
     {
         this.values = values;
         this.rows = values.Count;
         this.columns = values[0].Count;
     }
-    public ExpressionMatrix(int rows, int columns)
+    public Matrix(int rows, int columns)
     {
         List<List<Expression>> values = createEmptyMatrix(rows, columns);
         this.values = values;
@@ -92,7 +92,7 @@ class ExpressionMatrix
 
 
 
-    public ExpressionMatrix? multiply(ExpressionMatrix other)
+    public Matrix? multiply(Matrix other)
     {
         // this.rows, this.columns x other.rows, other.columns
         if (this.columns != other.rows)
@@ -101,7 +101,7 @@ class ExpressionMatrix
         }
 
 
-        ExpressionMatrix returnMatrix = new ExpressionMatrix(this.rows, other.columns);
+        Matrix returnMatrix = new Matrix(this.rows, other.columns);
         List<Expression> columnToProcess;
         List<Expression> rowToProcess;
         for (int rows = 0; rows < returnMatrix.rows; rows++)
@@ -123,7 +123,7 @@ class ExpressionMatrix
         Matrix returnMatrix = new Matrix(rows, rows);
         for (int i = 0; i < rows; i++)
         {
-            returnMatrix.setRowColumn(i, i, 1);
+            returnMatrix.setRowColumn(i, i, new(1));
         }
         return returnMatrix;
     }

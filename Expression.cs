@@ -55,7 +55,31 @@ class Expression
 
     public override string ToString()
     {
-        //TODO: default for no variable coeffcient
-        return $"{coefficient}{variable}^{exponent} + {constant}";
+        string returnString = "";
+        if (coefficient != 0)
+        {
+            if(coefficient != 1)
+            {
+                returnString += $"{coefficient}";
+            }
+            returnString += $"{variable}";
+        }
+        if (exponent != 1)
+        {
+            returnString += $"^{exponent}";
+        }
+        if (constant != 0)
+        {
+            if (returnString.Length != 0 && constant > 0)
+            {
+                returnString += "+";
+            }
+            returnString += $"{constant}";
+        }
+        if(returnString.Length == 0)
+        {
+            return "0";
+        }
+        return returnString;
     }
 }
