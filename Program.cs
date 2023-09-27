@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
 class Program
 {
@@ -111,8 +111,24 @@ class Program
         var returnValue = (letters: _letters, numbers: _numbers);
 
         return returnValue;
-
     }
 
+    public static bool tryGetExpression(string input, out Expression? expression)
+    {
+        expression = null;
+        Regex regex = new Regex(@"([\+\-]?\d+)?([a-zA-Z])?(\^[\+\-]?\d+)?([\+\-]\d+)?"); // an alien wrote this
+        Match match = regex.Match(input);
+        if (match.Success)
+        {
+            float coefficient = float.Parse(string.IsNullOrEmpty(match.Groups[1].Value) ? "1" : match.Groups[1].Value);
+            char variable = match.Groups[2].Value[0];
+            float exponent = float.Parse(string.IsNullOrEmpty(match.Groups[3].Value) ? "1" : match.Groups[3].Value.Substring(1));
+            float constant = string.IsNullOrEmpty(match.Groups[4].Value) ? 0 : float.Parse(match.Groups[4].Value);
 
+            expression = new Expression(variable, coefficient, exponent, constant);
+            return true;
+        }
+        return false;
+
+    }
 }
