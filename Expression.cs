@@ -22,9 +22,25 @@ class Expression
     {
         return new Expression(a.variable, (a.coefficient * b), a.exponent, (a.constant * b));
     }
-    // public static Expression operator *(Expression a, Expression b)
-    // {
-    //      
-    // }
-
+    public static Expression operator +(Expression a, Expression b)
+    {
+        if (a.variable == b.variable && a.exponent == b.exponent)
+        {
+            return new Expression(a.variable, a.coefficient + b.coefficient, a.exponent, a.constant + b.constant);
+        }
+        throw new InvalidOperationException("Variables or exponents do not match");
+    }
+    public static Expression operator *(Expression a, Expression b)
+    {
+        if (a.variable == b.variable)
+        {
+            return new Expression(a.variable, a.coefficient * b.coefficient, a.exponent + b.exponent, a.constant * b.constant);
+        }
+        throw new InvalidOperationException("Variables do not match");
+    }
+    
+    public override string ToString()
+    {
+        return $"{coefficient}{variable}^{exponent} + {constant}";
+    }
 }
