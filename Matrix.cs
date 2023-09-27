@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+using System.Security.Claims;
 using System.Text;
 
 class Matrix
@@ -114,6 +116,16 @@ class Matrix
 
         return returnMatrix;
 
+    }
+
+    public static Matrix getIdentityMatrix(int rows)
+    {
+        Matrix returnMatrix = new Matrix(rows, rows);
+        for(int i = 0; i < rows; i++)
+        {
+            returnMatrix.setRowColumn(i,i, 1);
+        }
+        return returnMatrix;
     }
 
 }
