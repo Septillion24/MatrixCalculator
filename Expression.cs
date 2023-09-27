@@ -13,6 +13,20 @@ class Expression
         this.variable = variable;
         this.exponent = exponent;
     }
+    public Expression()
+    {
+        this.coefficient = 0;
+        this.constant = 0;
+        this.variable = 'x';
+        this.exponent = 1;
+    }
+    public Expression(float constant)
+    {
+        this.coefficient = 0;
+        this.constant = constant;
+        this.variable = 'x';
+        this.exponent = 1;
+    }
 
     public static Expression operator +(Expression a, float b)
     {
@@ -38,9 +52,10 @@ class Expression
         }
         throw new InvalidOperationException("Variables do not match");
     }
-    
+
     public override string ToString()
     {
+        //TODO: default for no variable coeffcient
         return $"{coefficient}{variable}^{exponent} + {constant}";
     }
 }

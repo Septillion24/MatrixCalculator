@@ -1,31 +1,17 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "c:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {}
+    "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {}
   },
   "projects": {
-    "c:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {
+    "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+        "projectUniqueName": "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
         "projectName": "MatrixCalculator",
-        "projectPath": "c:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+        "projectPath": "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
         "packagesPath": "C:\\Users\\noahg\\.nuget\\packages\\",
-        "outputPath": "c:\\Projects\\MatrixCalculator\\obj\\",
-=======
-    "c:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {}
-  },
-  "projects": {
-    "c:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "c:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
-        "projectName": "MatrixCalculator",
-        "projectPath": "c:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
-        "packagesPath": "C:\\Users\\noahg\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\noahg\\Projects\\MatrixCalculator\\obj\\",
->>>>>>> c60db758d970848fe89c801364fc492540a9c140
+        "outputPath": "C:\\Projects\\MatrixCalculator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\noahg\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -77,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

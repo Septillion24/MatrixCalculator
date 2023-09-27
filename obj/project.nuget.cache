@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "989f3DSxHOjn26X+R8mXgOIxXgwkQUddtZevENZq6mMcQQPtJz9YMw34V+c4s697GR9fvoh6jObVjzmut4EQ6w==",
+  "dgSpecHash": "LCnkfhaQT/8cNLSpZJeuZmTU+iOwGv+N1afToGY7vad+MxHE3ffjFeROL3gCyMGSTPjO+f1VVUhjXDPiZGTEyw==",
   "success": true,
-  "projectFilePath": "c:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
-=======
-  "dgSpecHash": "msYU+O3WE0+SKdZ+/M58xlGyYsyBBsw+j3P1kgRdP5VpVfL8A6YKKW0RK+wgdKBoipDIXzWqVdOzAoiGrqi1KA==",
-  "success": true,
-  "projectFilePath": "c:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
->>>>>>> c60db758d970848fe89c801364fc492540a9c140
+  "projectFilePath": "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\noahg\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\noahg\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
@@ -92,5 +86,12 @@
     "C:\\Users\\noahg\\.nuget\\packages\\xunit.extensibility.core\\2.5.0\\xunit.extensibility.core.2.5.0.nupkg.sha512",
     "C:\\Users\\noahg\\.nuget\\packages\\xunit.extensibility.execution\\2.5.0\\xunit.extensibility.execution.2.5.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Projects\\MatrixCalculator\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

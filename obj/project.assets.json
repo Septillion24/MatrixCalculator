@@ -4932,11 +4932,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+      "projectUniqueName": "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
       "projectName": "MatrixCalculator",
-      "projectPath": "C:\\Users\\noahg\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
+      "projectPath": "C:\\Projects\\MatrixCalculator\\MatrixCalculator.csproj",
       "packagesPath": "C:\\Users\\noahg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\noahg\\Projects\\MatrixCalculator\\obj\\",
+      "outputPath": "C:\\Projects\\MatrixCalculator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\noahg\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4988,8 +4988,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Projects\\MatrixCalculator\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

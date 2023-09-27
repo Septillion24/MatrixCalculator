@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 class Program
 {
@@ -19,45 +19,11 @@ class Program
     {
         Console.Clear();
         Match match;
-        int rows = 0;
-        int columns = 0;
+
+
         string userInput;
-        do
-        {
-            Console.WriteLine($"Input dimensions of matrix {matrixName} (format: \"rows x columns\")\n Alternately, use : to specify a command and type the matrix command after");
-            Console.Write("> ");
-            userInput = Console.ReadLine();
-            if (userInput[1] == ':')
-            {
-                (string letters, string numbers) userResult = parseUserResult(userInput);
-                if (userResult.letters.Contains("i"))
-                {
-                    Matrix.getIdentityMatrix(int.Parse(userResult.numbers));
-                }
-            }
-            Regex regex = new Regex(@"(\d+)\s*x\s*(\d+)");
-            match = regex.Match(userInput);
-            if (match.Success)
-            {
-                rows = int.Parse(match.Groups[1].Value);
-                columns = int.Parse(match.Groups[2].Value);
-                Console.WriteLine($"Rows: {rows}, Columns: {columns}");
-            }
 
-        } while (!match.Success && force);
-
-        // Console.Write("Rows: ");
-        // String userInput = Console.ReadLine();
-        // if (!int.TryParse(userInput, out int rows))
-        // {
-        //     return null;
-        // }
-        // Console.Write("Columns: ");
-        // userInput = Console.ReadLine();
-        // if (!int.TryParse(userInput, out int columns))
-        // {
-        //     return null;
-        // }
+        promptUserCommandOrDimensions(matrixName, force, out match, out int rows, out int columns, out userInput);
 
         Matrix userMatrix = new Matrix(rows, columns);
 
@@ -69,26 +35,67 @@ class Program
                 Console.Clear();
                 do
                 {
-
-                    Console.WriteLine(userMatrix.ToString());
-                    Console.Write($"\n Input value for value at {row},{column}: ");
-                    userInput = Console.ReadLine();
-                    userInput = ReplaceWhitespace(userInput);
-                    (string letters, string numbers) userResult = parseUserResult(userInput);
-                    if (float.TryParse(userInput, out userValue))
-                    {
-                        userMatrix.setRowColumn(row, column, userValue);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Failed, could not convert \"{userInput}\" to a float or command. Please try again.");
-                    }
+                    promptRowColumn(out userInput, userMatrix, out userValue, row, column);
 
                 } while (!float.TryParse(userInput, out userValue));
             }
         }
 
         return userMatrix;
+
+        static void promptUserCommandOrDimensions(string matrixName, bool force, out Match match, out int rows, out int columns, out string userInput)
+        {
+            do
+            {
+                rows = 0;
+                columns = 0;
+                Console.WriteLine($"Input dimensions of matrix {matrixName} (format: \"rows x columns\")\n Alternately, use : to specify a command and type the matrix command after(eg, :3i for a 3x3 identity matrix)");
+                Console.Write("> ");
+                userInput = Console.ReadLine();
+                if (userInput[0] == ':')
+                {
+                    (string letters, string numbers) userResult = parseUserResult(userInput);
+                    if (userResult.letters.Contains("i"))
+                    {
+                        Matrix.getIdentityMatrix(int.Parse(userResult.numbers));
+                    }
+                }
+                Regex regex = new Regex(@"(\d+)\s*x\s*(\d+)");
+                match = regex.Match(userInput);
+                if (match.Success)
+                {
+                    rows = int.Parse(match.Groups[1].Value);
+                    columns = int.Parse(match.Groups[2].Value);
+                    Console.WriteLine($"Rows: {rows}, Columns: {columns}");
+                }
+
+            } while (!match.Success && force);
+
+        }
+
+        static void promptRowColumn(out string userInput, Matrix userMatrix, out float userValue, int row, int column)
+        {
+            Console.WriteLine(userMatrix.ToString());
+            Console.Write($"\n Input value for value at {row},{column}: ");
+            userInput = Console.ReadLine();
+            userInput = ReplaceWhitespace(userInput);
+            (string letters, string numbers) userResult = parseUserResult(userInput);
+            if (float.TryParse(userInput, out userValue))
+            {
+                Expression expression = new Expression('x',0,1,userValue);
+                userMatrix.setRowColumn(row, column, expression);
+            }
+            else if (userResult.letters.Length == 1)
+            {
+                //TODO: do
+                tryGetExpression(userInput, out Expression expression);
+            }
+            else
+            {
+                Console.WriteLine($"Failed, could not convert \"{userInput}\" to an expression or number. Please try again.");
+            }
+        }
+
     }
 
 
