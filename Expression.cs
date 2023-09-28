@@ -59,6 +59,29 @@ class Expression
             throw new InvalidOperationException("Variables or exponents do not match");
         }
     }
+    public static Expression operator -(Expression a, Expression b)
+    {
+        if (a.variable == b.variable && a.exponent == b.exponent)
+        {
+            return new Expression(a.variable, a.coefficient - b.coefficient, a.exponent, a.constant - b.constant);
+        }
+        else if (a.coefficient == 0 && b.coefficient != 0)
+        {
+            return new Expression(b.variable, b.coefficient, b.exponent, a.constant - b.constant);
+        }
+        else if (a.coefficient != 0 && b.coefficient == 0)
+        {
+            return new Expression(a.variable, a.coefficient, a.exponent, a.constant - b.constant);
+        }
+        else if (a.coefficient == 0 && b.coefficient == 0)
+        {
+            return new Expression(a.constant + b.constant);
+        }
+        else
+        {
+            throw new InvalidOperationException("Variables or exponents do not match");
+        }
+    }
 
     public static Expression operator *(Expression a, Expression b)
     {
@@ -85,6 +108,22 @@ class Expression
             return new Expression(newConstant);
         }
     }
+    public static Expression operator /(Expression a, Expression b)
+    {
+        if (b.coefficient == 0)
+        {
+            throw new InvalidOperationException("Division by zero");
+        }
+        if (a.variable == b.variable && a.exponent == b.exponent)
+        {
+            return new Expression(a.variable, a.coefficient / b.coefficient, a.exponent, a.constant / b.constant);
+        }
+        else
+        {
+            throw new InvalidOperationException("Variables or exponents do not match");
+        }
+    }
+
 
 
 
