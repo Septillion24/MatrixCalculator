@@ -42,23 +42,58 @@ class Expression
         {
             return new Expression(a.variable, a.coefficient + b.coefficient, a.exponent, a.constant + b.constant);
         }
-        throw new InvalidOperationException("Variables or exponents do not match");
+        else if (a.coefficient == 0 && b.coefficient != 0)
+        {
+            return new Expression(b.variable, b.coefficient, b.exponent, a.constant + b.constant);
+        }
+        else if (a.coefficient != 0 && b.coefficient == 0)
+        {
+            return new Expression(a.variable, a.coefficient, a.exponent, a.constant + b.constant);
+        }
+        else if (a.coefficient == 0 && b.coefficient == 0)
+        {
+            return new Expression(a.constant + b.constant);
+        }
+        else
+        {
+            throw new InvalidOperationException("Variables or exponents do not match");
+        }
     }
+
     public static Expression operator *(Expression a, Expression b)
     {
-        if (a.variable == b.variable)
+        float newCoefficient;
+        float newExponent;
+        float newConstant = a.constant * b.constant;
+
+        if (a.coefficient != 0 && b.coefficient != 0)
         {
-            return new Expression(a.variable, a.coefficient * b.coefficient, a.exponent + b.exponent, a.constant * b.constant);
+            newCoefficient = a.coefficient * b.coefficient;
+            newExponent = a.exponent + b.exponent;
+            return new Expression(a.variable, newCoefficient, newExponent, newConstant);
         }
-        throw new InvalidOperationException("Variables do not match");
+        else if (a.coefficient == 0 && b.coefficient != 0)
+        {
+            return new Expression(b.variable, b.coefficient * a.constant, b.exponent, newConstant);
+        }
+        else if (a.coefficient != 0 && b.coefficient == 0)
+        {
+            return new Expression(a.variable, a.coefficient * b.constant, a.exponent, newConstant);
+        }
+        else
+        {
+            return new Expression(newConstant);
+        }
     }
+
+
 
     public override string ToString()
     {
         string returnString = "";
         if (coefficient != 0)
         {
-            if(coefficient != 1)
+            if (coefficient != 1)
             {
                 returnString += $"{coefficient}";
             }
@@ -76,7 +111,7 @@ class Expression
             }
             returnString += $"{constant}";
         }
-        if(returnString.Length == 0)
+        if (returnString.Length == 0)
         {
             return "0";
         }

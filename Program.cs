@@ -9,9 +9,13 @@ class Program
         Dictionary<string, Matrix> matricies = new() { };
 
 
+        Console.WriteLine(new Expression(2.0f) * new Expression('x', 1,1,2));
+        Console.ReadLine();
+        matricies["A"] = promptUserMatrix("A");
+        matricies["B"] = promptUserMatrix("B");
+        Console.WriteLine($"{matricies["A"]} \n * \n {matricies["B"]} \n = ");
+        Console.WriteLine(matricies["A"].multiply(matricies["B"]));
 
-        promptUserMatrix("A");
-        promptUserMatrix("B");
     }
 
 
