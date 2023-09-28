@@ -89,6 +89,24 @@ class Matrix
         }
         return sb.ToString();
     }
+    public Matrix getSubmatrix(int row, int column)
+    {
+        Matrix returnMatrix = new Matrix(rows - 1, columns - 1);
+        int rowToAdd = 0;
+        for (int currentRow = 0; currentRow < rows; currentRow++)
+        {
+            if (currentRow == row) continue;
+            int columnToAdd = 0;
+            for (int currentColumn = 0; currentColumn < columns; currentColumn++)
+            {
+                if (currentColumn == column) continue;
+                returnMatrix.setRowColumn(rowToAdd, columnToAdd, getRowColumn(currentRow, currentColumn));
+                columnToAdd++;
+            }
+            rowToAdd++;
+        }
+        return returnMatrix;
+    }
 
 
 
@@ -126,6 +144,43 @@ class Matrix
             returnMatrix.setRowColumn(i, i, new(1));
         }
         return returnMatrix;
+    }
+    public static Expression getDeterminant(Matrix matrix)
+    {
+        if (matrix.rows != matrix.columns)
+        {
+            throw new InvalidOperationException("Cannot calculate determinant of a non-square matrix.");
+        }
+
+        if (matrix.rows == 1)
+        {
+            return matrix.getRowColumn(0, 0);
+        }
+        if (matrix.rows == 2)
+        {
+            return (matrix.getRowColumn(0, 0) * matrix.getRowColumn(1, 1)) - (matrix.getRowColumn(1, 0) * matrix.getRowColumn(0, 1));
+        }
+        if (matrix.rows == 3)
+        {
+            Expression det;
+            det = matrix.getRowColumn(0, 0) * (matrix.getRowColumn(1, 1) * matrix.getRowColumn(2, 2) - matrix.getRowColumn(1, 2) * matrix.getRowColumn(2, 1));
+            det -= matrix.getRowColumn(0, 1) * (matrix.getRowColumn(1, 0) * matrix.getRowColumn(2, 2) - matrix.getRowColumn(1, 2) * matrix.getRowColumn(2, 0));
+            det += matrix.getRowColumn(0, 2) * (matrix.getRowColumn(1, 0) * matrix.getRowColumn(2, 1) - matrix.getRowColumn(1, 1) * matrix.getRowColumn(2, 0));
+            return det;
+        }
+        else
+        {
+            Matrix submatrix = new Matrix(matrix.rows - 1, matrix.rows - 1);
+            Expression det = new();
+            // always use first row
+            for (int column = 0; column < matrix.rows; column++)
+            {
+                det += matrix.getRowColumn(0, column) * new Expression((float)Math.Pow(-1, column)) * getDeterminant(matrix.getSubmatrix(0, column));
+            }
+
+
+            return det;
+        }
     }
 
 }
