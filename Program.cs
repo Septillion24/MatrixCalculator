@@ -83,7 +83,7 @@ class Program
         {
             float userValue;
             Console.WriteLine(userMatrix.ToString());
-            Console.Write($"\n Input value for value at {row},{column}: ");
+            Console.Write($"\n Input value at {row},{column}: ");
             userInput = Console.ReadLine();
             userInput = ReplaceWhitespace(userInput);
             (string letters, string numbers) userResult = parseUserResult(userInput);
