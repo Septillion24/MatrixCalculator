@@ -52,7 +52,6 @@ class Matrix
         }
         return sum;
     }
-
     public List<Expression> getColumnList(int column)
     {
         // columns start at 0
@@ -69,7 +68,6 @@ class Matrix
         List<Expression> returnValue = new List<Expression>() { };
         return this.values[row];
     }
-
     public void setRowColumn(int row, int column, Expression value)
     {
         this.values[row][column] = value;
@@ -107,9 +105,6 @@ class Matrix
         }
         return returnMatrix;
     }
-
-
-
     public Matrix? multiply(Matrix other)
     {
         // this.rows, this.columns x other.rows, other.columns
@@ -134,6 +129,41 @@ class Matrix
 
         return returnMatrix;
 
+    }
+
+    public Matrix? add(Matrix other)
+    {
+        if (!(this.rows == other.rows && this.columns == other.columns))
+        {
+            return null;
+        }
+
+        Matrix returnMatrix = new Matrix(rows, columns);
+        for (int row = 0; row < rows; row++)
+        {
+            for (int column = 0; column < columns; column++)
+            {
+                returnMatrix.setRowColumn(row, column, this.getRowColumn(row, column) - other.getRowColumn(row,column));
+            }
+        }
+        return returnMatrix;
+    }
+    public Matrix? subtract(Matrix other)
+    {
+        if (!(this.rows == other.rows && this.columns == other.columns))
+        {
+            return null;
+        }
+
+        Matrix returnMatrix = new Matrix(rows, columns);
+        for (int row = 0; row < rows; row++)
+        {
+            for (int column = 0; column < columns; column++)
+            {
+                returnMatrix.setRowColumn(row, column, this.getRowColumn(row, column) - other.getRowColumn(row,column));
+            }
+        }
+        return returnMatrix;
     }
 
     public static Matrix getIdentityMatrix(int rows)
@@ -182,5 +212,4 @@ class Matrix
             return det;
         }
     }
-
 }
