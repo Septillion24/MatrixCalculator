@@ -3,18 +3,17 @@ using System.Text.RegularExpressions;
 
 class Program
 {
-    // regex junk
-    private static readonly Regex sWhitespace = new Regex(@"\s+");
     static char nextLetter = 'A';
     static void Main(string[] args)
     {
         Dictionary<string, Matrix> matricies = new() { };
         Console.Clear();
 
-        
+
         while (true)
         {
-            Console.WriteLine("Current matricies: " + string.Join(", ", matricies.Keys));
+            Console.WriteLine("Current matricies: [" + string.Join(", ", matricies.Keys) + "]");
+            Console.WriteLine("Input command: ");
             Console.Write(">");
 
             string userInput = Console.ReadLine() ?? "";
@@ -25,7 +24,7 @@ class Program
 
     static void getUserAction(string userInput, Dictionary<string, Matrix> matricies)
     {
-        Regex regex = new Regex(@"(\d*)?([A-Za-z])\s*([\+\-\*\/])\s*(\d*)?([A-Za-z])"); // A+B
+        Regex regex = new Regex(@"(\d*)?([A-Za-z])\s*([\+\-\*])\s*(\d*)?([A-Za-z])");
         Match match = regex.Match(userInput);
         if (match.Success)
         {
@@ -36,8 +35,8 @@ class Program
         string command = parts[0];
         if (command == "add" || command == "new")
         {
-            Matrix result = promptNewUserMatrix(parts[1]);
-            matricies[parts[1]] = result;
+            Matrix result = promptNewUserMatrix(parts[1].ToUpper());
+            matricies[parts[1].ToUpper()] = result;
         }
 
         static void doUserOperation(Match match, Dictionary<string, Matrix> matricies) // TODO
@@ -51,34 +50,28 @@ class Program
             {
                 if (operatorSymbol == "+")
                 {
-                    //TODO
+                    Console.WriteLine(matrix1.add(matrix2));
                 }
                 else if (operatorSymbol == "-")
                 {
-                    //TODO
-                }
-                else if (operatorSymbol == "/")
-                {
-                    //TODO
+                    Console.WriteLine(matrix1.subtract(matrix2));
                 }
                 else if (operatorSymbol == "*")
                 {
-                    //TODO
+                    Console.WriteLine(matrix1.multiply(matrix2));
                 }
                 else
                 {
-                    //TODO
+                    Console.WriteLine("Somehow this happened");
                 }
             }
             else if (matricies.Keys.Contains(match.Groups[2].Value))
             {
-                Console.WriteLine("Here!");
                 Console.WriteLine($"Matrix {match.Groups[2].Value} was not found in list. Perhaps use \"add {match.Groups[2].Value}\" to create it.");
                 return;
             }
             else
             {
-                Console.WriteLine("There!");
                 Console.WriteLine($"Matrix {match.Groups[5].Value} was not found in list. Perhaps use \"add {match.Groups[5].Value}\" to create it.");
                 return;
             }
@@ -110,7 +103,7 @@ class Program
         }
 
         return userMatrix;
-
+        //TODO: refactor
         static void promptUserCommandOrDimensions(string matrixName, bool force, out int rows, out int columns, out string userInput)
         {
             Match match;
@@ -122,14 +115,15 @@ class Program
                 Console.WriteLine($"Input dimensions of matrix {matrixName} (format: \"rows x columns\")\n Alternately, use : to specify a command and type the matrix command after(eg, :3i for a 3x3 identity matrix)");
                 Console.Write("> ");
                 userInput = Console.ReadLine() ?? "";
-                // if (userInput[0] == ':')
-                // {
-                //     (string letters, string numbers) userResult = parseUserResultMatrixEntry(userInput);
-                //     if (userResult.letters.Contains("i"))
-                //     {
-                //         Matrix.getIdentityMatrix(int.Parse(userResult.numbers));
-                //     }
-                // }
+                if (userInput[0] == ':')
+                {
+                    (string letters, string numbers) userResult = parseUserResultMatrixEntry(userInput);
+                    if (userResult.letters.Contains("i"))
+                    {
+                        Matrix.getIdentityMatrix(int.Parse(userResult.numbers));
+                        force = false;
+                    }
+                }
                 Regex regex = new Regex(@"(\d+)\s*x\s*(\d+)");
                 match = regex.Match(userInput);
                 if (match.Success)
@@ -173,10 +167,12 @@ class Program
     }
     public static string ReplaceWhitespace(string input, string replacement)
     {
+        Regex sWhitespace = new Regex(@"\s+");
         return sWhitespace.Replace(input, replacement);
     }
     public static string ReplaceWhitespace(string input)
     {
+        Regex sWhitespace = new Regex(@"\s+");
         return sWhitespace.Replace(input, "");
     }
     public static (string, string) parseUserResultMatrixEntry(string userInput)
