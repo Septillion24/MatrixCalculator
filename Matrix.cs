@@ -143,7 +143,7 @@ class Matrix
         {
             for (int column = 0; column < columns; column++)
             {
-                returnMatrix.setRowColumn(row, column, this.getRowColumn(row, column) - other.getRowColumn(row,column));
+                returnMatrix.setRowColumn(row, column, this.getRowColumn(row, column) + other.getRowColumn(row, column));
             }
         }
         return returnMatrix;
@@ -160,7 +160,7 @@ class Matrix
         {
             for (int column = 0; column < columns; column++)
             {
-                returnMatrix.setRowColumn(row, column, this.getRowColumn(row, column) - other.getRowColumn(row,column));
+                returnMatrix.setRowColumn(row, column, this.getRowColumn(row, column) - other.getRowColumn(row, column));
             }
         }
         return returnMatrix;
@@ -175,37 +175,37 @@ class Matrix
         }
         return returnMatrix;
     }
-    public static Expression getDeterminant(Matrix matrix)
+    public Expression getDeterminant()
     {
-        if (matrix.rows != matrix.columns)
+        if (this.rows != this.columns)
         {
             throw new InvalidOperationException("Cannot calculate determinant of a non-square matrix.");
         }
 
-        if (matrix.rows == 1)
+        if (this.rows == 1)
         {
-            return matrix.getRowColumn(0, 0);
+            return this.getRowColumn(0, 0);
         }
-        if (matrix.rows == 2)
+        if (this.rows == 2)
         {
-            return (matrix.getRowColumn(0, 0) * matrix.getRowColumn(1, 1)) - (matrix.getRowColumn(1, 0) * matrix.getRowColumn(0, 1));
+            return (this.getRowColumn(0, 0) * this.getRowColumn(1, 1)) - (this.getRowColumn(1, 0) * this.getRowColumn(0, 1));
         }
-        if (matrix.rows == 3)
+        if (this.rows == 3)
         {
             Expression det;
-            det = matrix.getRowColumn(0, 0) * (matrix.getRowColumn(1, 1) * matrix.getRowColumn(2, 2) - matrix.getRowColumn(1, 2) * matrix.getRowColumn(2, 1));
-            det -= matrix.getRowColumn(0, 1) * (matrix.getRowColumn(1, 0) * matrix.getRowColumn(2, 2) - matrix.getRowColumn(1, 2) * matrix.getRowColumn(2, 0));
-            det += matrix.getRowColumn(0, 2) * (matrix.getRowColumn(1, 0) * matrix.getRowColumn(2, 1) - matrix.getRowColumn(1, 1) * matrix.getRowColumn(2, 0));
+            det = this.getRowColumn(0, 0) * (this.getRowColumn(1, 1) * this.getRowColumn(2, 2) - this.getRowColumn(1, 2) * this.getRowColumn(2, 1));
+            det -= this.getRowColumn(0, 1) * (this.getRowColumn(1, 0) * this.getRowColumn(2, 2) - this.getRowColumn(1, 2) * this.getRowColumn(2, 0));
+            det += this.getRowColumn(0, 2) * (this.getRowColumn(1, 0) * this.getRowColumn(2, 1) - this.getRowColumn(1, 1) * this.getRowColumn(2, 0));
             return det;
         }
         else
         {
-            Matrix submatrix = new Matrix(matrix.rows - 1, matrix.rows - 1);
+            Matrix submatrix = new Matrix(this.rows - 1, this.rows - 1);
             Expression det = new();
             // always use first row
-            for (int column = 0; column < matrix.rows; column++)
+            for (int column = 0; column < this.rows; column++)
             {
-                det += matrix.getRowColumn(0, column) * new Expression((float)Math.Pow(-1, column)) * getDeterminant(matrix.getSubmatrix(0, column));
+                det += this.getRowColumn(0, column) * new Expression((float)Math.Pow(-1, column)) * this.getSubmatrix(0, column).getDeterminant();
             }
 
 
