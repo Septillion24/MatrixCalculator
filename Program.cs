@@ -38,6 +38,18 @@ class Program
             Matrix result = promptNewUserMatrix(parts[1].ToUpper());
             matricies[parts[1].ToUpper()] = result;
         }
+        if (command == "det")
+        {
+            if (matricies.ContainsKey(parts[1]))
+            {
+                Console.WriteLine(matricies[parts[1]].getDeterminant());
+            }
+            else
+            {
+                Console.WriteLine($"Could not find matrix {parts[1]} in list.");
+            }
+        }
+        
 
         static void doUserOperation(Match match, Dictionary<string, Matrix> matricies) // TODO
         {
