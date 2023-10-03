@@ -40,16 +40,27 @@ class Program
         }
         if (command == "det")
         {
-            if (matricies.ContainsKey(parts[1]))
+            if (matricies.ContainsKey(parts[1].ToUpper()))
             {
-                Console.WriteLine(matricies[parts[1]].getDeterminant());
+                Console.WriteLine(matricies[parts[1].ToUpper()].getDeterminant());
             }
             else
             {
-                Console.WriteLine($"Could not find matrix {parts[1]} in list.");
+                Console.WriteLine($"Could not find matrix {parts[1].ToUpper()} in list.");
             }
         }
-        
+        if (command == "change" || command == "edit")
+        {
+            if (matricies.ContainsKey(parts[1].ToUpper()))
+            {
+                //TODO
+            }
+            else
+            {
+                Console.WriteLine($"Could not find matrix {parts[1].ToUpper()} in list.");
+            }
+        }
+
 
         static void doUserOperation(Match match, Dictionary<string, Matrix> matricies) // TODO
         {
