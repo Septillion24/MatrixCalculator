@@ -69,8 +69,9 @@ class Program
             string operatorSymbol = match.Groups[3].Value;
             string num2 = match.Groups[4].Value;
             string char2 = match.Groups[5].Value;
-            if (matricies.TryGetValue(match.Groups[2].Value, out Matrix matrix1) && matricies.TryGetValue(match.Groups[5].Value, out Matrix matrix2))
+            if (matricies.TryGetValue(match.Groups[2].Value.ToUpper(), out Matrix matrix1) && matricies.TryGetValue(match.Groups[5].Value.ToUpper(), out Matrix matrix2))
             {
+        
                 if (operatorSymbol == "+")
                 {
                     Console.WriteLine(matrix1.add(matrix2));
@@ -90,12 +91,12 @@ class Program
             }
             else if (matricies.Keys.Contains(match.Groups[2].Value))
             {
-                Console.WriteLine($"Matrix {match.Groups[2].Value} was not found in list. Perhaps use \"add {match.Groups[2].Value}\" to create it.");
+                Console.WriteLine($"Matrix {match.Groups[2].Value.ToUpper()} was not found in list. Perhaps use \"add {match.Groups[2].Value.ToUpper()}\" to create it.");
                 return;
             }
             else
             {
-                Console.WriteLine($"Matrix {match.Groups[5].Value} was not found in list. Perhaps use \"add {match.Groups[5].Value}\" to create it.");
+                Console.WriteLine($"Matrix {match.Groups[5].Value.ToUpper()} was not found in list. Perhaps use \"add {match.Groups[5].Value.ToUpper()}\" to create it.");
                 return;
             }
         }
