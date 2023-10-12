@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 
 class Program
 {
-    static char nextLetter = 'A';
     static void Main(string[] args)
     {
         Dictionary<string, Matrix> matricies = new() { };
